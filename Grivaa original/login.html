@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+      <!-- Login Form -->
+      <div id="login-section">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required><br>
+
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required><br>
+
+            <a href="index.html"><button type="submit">Login</button></a>
+            <a href="index.html"><h3>Click here</h3></a>
+            <p id="login-error-message" class="error-message"></p>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Sign up logic
+document.getElementById("signup-form").addEventListener("submit", function(e) {
+e.preventDefault();
+
+// Get user input
+const username = document.getElementById("signup-username").value;
+const password = document.getElementById("signup-password").value;
+
+// Save username and password to local storage
+localStorage.setItem("username", username);
+localStorage.setItem("password", password);
+
+alert("Sign Up successful!");
+// Clear form inputs after successful sign-up
+document.getElementById("signup-form").reset();
+});
+
+// Login logic
+document.getElementById("login-form").addEventListener("submit", function(e) {
+e.preventDefault();
+
+// Get user input
+const enteredUsername = document.getElementById("login-username").value;
+const enteredPassword = document.getElementById("login-password").value;
+
+// Get stored username and password from local storage
+const storedUsername = localStorage.getItem("username");
+const storedPassword = localStorage.getItem("password");
+
+// Check if entered credentials match stored credentials
+if (enteredUsername === storedUsername && enteredPassword === storedPassword) {
+    alert("Login successful!");
+    document.getElementById("login-error-message").style.display = "none";
+} else {
+    document.getElementById("login-error-message").innerText = "Incorrect username or password!";
+    document.getElementById("login-error-message").style.display = "block";
+}
+});
+
+</script>
+</body>
+</html>
